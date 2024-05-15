@@ -50,6 +50,7 @@ const AllUserDataList = () => {
                <table className="min-w-full border-collapse border border-gray-300">
                   <thead>
                      <tr>
+                     <th className="border border-gray-300 px-4 py-2">Sno.</th>
                         <th className="border border-gray-300 px-4 py-2">Name</th>
                         <th className="border border-gray-300 px-4 py-2">Email</th>
                         <th className="border border-gray-300 px-4 py-2">Phone</th>
@@ -60,6 +61,9 @@ const AllUserDataList = () => {
                   <tbody>
                      {users.map(user => (
                         <tr key={user.id}>
+                           <td className="border border-gray-300 px-4 py-2">
+                              {user.id}
+                           </td>
                            <td className="border border-gray-300 px-4 py-2">
                               {user.name}
                            </td>
