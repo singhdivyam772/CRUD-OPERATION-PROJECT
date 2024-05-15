@@ -43,7 +43,7 @@ const AllUserDataList = () => {
             <h1 className='text-3xl text-blue-400 my-5 font-medium'>
                Our Company User Data
             </h1>
-            <Link to="/create-user" className="text-blue-500 underline mb-4">
+            <Link to="/create-user" className="text-blue-500 text-xl font-medium underline mb-4">
                Create New User
             </Link>
             <div className="overflow-x-auto w-full">
