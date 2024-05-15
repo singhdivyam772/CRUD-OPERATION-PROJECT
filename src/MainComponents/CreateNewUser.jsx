@@ -16,7 +16,7 @@ const CreateNewUser = () => {
    const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData({
-         // ...formData, mainting previous data
+         ...formData, //mainting previous data
          [name]: value
       });
    };
@@ -78,7 +78,7 @@ const CreateNewUser = () => {
                </p>
                <input
                   id='phone'
-                  type='text'
+                  type='number'
                   name='phone'
                   value={formData.phone}
                   onChange={handleChange}
