@@ -9,6 +9,7 @@ const AllUserDataList = () => {
    const [users, setUsers] = useState([]);
    const [loading, setLoading] = useState(true);
 
+//   get the data initailly and fetch to the setUsers
    useEffect(() => {
       axios.get('https://jsonplaceholder.typicode.com/users')
          .then(response => {
@@ -24,15 +25,19 @@ const AllUserDataList = () => {
    const deleteUser = (id) => {
       axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
          .then(response => {
+
+            // if user id is not equal to the one which passes in args than expect that args id return all users and set to the setUsers 
             setUsers(users.filter(user => user.id !== id));
             toast.success("Deleted Successufully")
          })
+
          .catch(error => {
             setError('Error deleting user');
          });
    }
    return (
       <main className='flex flex-col justify-start mt-5 items-center w-full px-4 pb-10'>
+         
          {
             loading 
             ? (

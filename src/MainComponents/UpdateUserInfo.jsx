@@ -13,6 +13,7 @@ const UpdateUserInfo = () => {
       phone: ''
    });
 
+   // initalise only the data which pass through the id
    useEffect(() => {
       axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
          .then(response => {

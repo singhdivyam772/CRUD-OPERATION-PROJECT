@@ -12,10 +12,11 @@ const CreateNewUser = () => {
    });
    const navigate = useNavigate();
 
+   // store the data while user enter the data
    const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData({
-         ...formData,
+         // ...formData, mainting previous data
          [name]: value
       });
    };
@@ -30,6 +31,9 @@ const CreateNewUser = () => {
          .catch(error => {
             toast.error('Error creating user');
          });
+
+         // check the data
+         console.log(formData);
 
    };
 
