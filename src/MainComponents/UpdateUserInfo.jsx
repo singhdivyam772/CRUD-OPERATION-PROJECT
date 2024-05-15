@@ -13,20 +13,20 @@ const UpdateUserInfo = () => {
       phone: ''
    });
 
-   // initalise only the data which pass through the id
+   // Initialize only the data which passes through the id
    useEffect(() => {
       axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
          .then(response => {
             setUser(response.data);
          })
          .catch(error => {
-            setMessage('Error fetching user data');
+            toast.error('Error fetching user data');
          });
    }, [id]);
 
    const handleChange = (e) => {
       const { name, value } = e.target;
-      setUser(({
+      setUser(prevState => ({
          ...prevState,
          [name]: value
       }));
@@ -42,16 +42,19 @@ const UpdateUserInfo = () => {
          .catch(error => {
             toast.error('Error updating user');
          });
+
+         console.log(user)
    };
 
    return (
       <div className='w-screen h-screen flex flex-col justify-start my-12 items-center'>
-         <form onSubmit={handleSubmit} className=' md:w-[50%] w-full h-[60%] shadow-xl flex flex-col justify-center items-center'>
+         <form onSubmit={handleSubmit} 
+               className='md:w-[50%] w-full h-[60%] shadow-xl flex flex-col justify-center items-center'>
             <h1 className='text-4xl font-medium text-blue-400'>
-               Edit User
+               Update User
             </h1>
-            <label htmlFor='name' className=' w-[50%] my-5'>
-               <p className=' text-2xl font-semibold ' >
+            <label htmlFor='name' className='w-[50%] my-5'>
+               <p className='text-2xl font-semibold'>
                   Name:
                </p>
                <input
@@ -59,12 +62,12 @@ const UpdateUserInfo = () => {
                   name="name"
                   value={user.name}
                   onChange={handleChange}
-                  className=' h-9 w-[90%] rounded-md'
+                  className='h-9 w-[90%] rounded-md'
                   required
                />
             </label>
-            <label htmlFor='phone' className=' w-[50%] my-5'>
-               <p className=' text-2xl font-semibold '>
+            <label htmlFor='email' className='w-[50%] my-5'>
+               <p className='text-2xl font-semibold'>
                   Email
                </p>
                <input
@@ -72,12 +75,12 @@ const UpdateUserInfo = () => {
                   name="email"
                   value={user.email}
                   onChange={handleChange}
-                  className=' h-9 w-[90%] rounded-md'
+                  className='h-9 w-[90%] rounded-md'
                   required
                />
             </label>
-            <label htmlFor='phone' className=' w-[50%] my-5'>
-               <p className=' text-2xl font-semibold '>
+            <label htmlFor='phone' className='w-[50%] my-5'>
+               <p className='text-2xl font-semibold'>
                   Phone:
                </p>
                <input
@@ -85,7 +88,7 @@ const UpdateUserInfo = () => {
                   name="phone"
                   value={user.phone}
                   onChange={handleChange}
-                  className=' h-9 w-[90%] rounded-md'
+                  className='h-9 w-[90%] rounded-md'
                   required
                />
             </label>
